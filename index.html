@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Twitch card</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
       :root {
         --background: rgb(14, 14, 14);
         --border: #49494a;
@@ -47,7 +50,7 @@
 
       .card:before {
         pointer-events: none;
-        content: ""; /* Magic gradient here 🪄 */
+        content: ''; /* Magic gradient here 🪄 */
         position: absolute;
         height: 100%;
         width: 100%;
@@ -95,7 +98,7 @@
       .card-title,
       .card-subtitle {
         color: var(--text);
-        font-family: "Roboto", sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-weight: bold;
         line-height: 29px;
         z-index: 3;
@@ -123,7 +126,9 @@
         transition: transform 200ms linear;
       }
 
-      .card-icon {
+      svg {
+        width: 40px;
+        height: 40px;
         position: absolute;
         padding: 1rem;
         font-size: 3.5vmin;
@@ -134,7 +139,7 @@
         transition: color 250ms ease;
       }
       /* Hover effect here 🧙‍♂️ */
-      .card:hover .card-icon {
+      .card:hover svg {
         color: var(--border);
         /* background: rgba(0, 0, 0, 0.35); */
         /* border-radius: 50%; */
@@ -149,19 +154,25 @@
         <h4 class="card-subtitle">
           <!-- see script that injects span here -->
         </h4>
-        <i class="card-icon fa-brands fa-twitch"></i>
+        <!-- <i class="card-icon fa-brands fa-twitch"></i> -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path
+            d="M391.17,103.47H352.54v109.7h38.63ZM285,103H246.37V212.75H285ZM120.83,0,24.31,91.42V420.58H140.14V512l96.53-91.42h77.25L487.69,256V0ZM449.07,237.75l-77.22,73.12H294.61l-67.6,64v-64H140.14V36.58H449.07Z"
+          />
+        </svg>
       </div>
     </div>
     <script src="https://kit.fontawesome.com/944eb371a4.js"></script>
     <script>
       // The goal here is to stagger words
-      const subtitle = document.getElementsByClassName("card-subtitle")[0];
+      const subtitle =
+        document.getElementsByClassName('card-subtitle')[0];
 
       // Function creates a HTML span with class:
       const produceSpan = (text, index) => {
-        const word = document.createElement("span");
+        const word = document.createElement('span');
         word.innerHTML = `${text}`;
-        word.classList.add("card-subtitle-span"); // see css selector above!
+        word.classList.add('card-subtitle-span'); // see css selector above!
         word.style.transitionDelay = `${index * 40}ms`;
         return word;
       };
@@ -170,11 +181,13 @@
       const subtitleArray = (text) => {
         // console.log(text.split(" "));
         return text
-          .split(" ")
-          .map((text, index) => subtitle.appendChild(produceSpan(text, index)));
+          .split(' ')
+          .map((text, index) =>
+            subtitle.appendChild(produceSpan(text, index))
+          );
       };
       subtitleArray(
-        "Join a Twitch community! And discover the best live streams anywhere, anytime."
+        'Join a Twitch community! And discover the best live streams anywhere, anytime.'
       );
     </script>
   </body>
